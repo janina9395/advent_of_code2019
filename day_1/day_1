@@ -1,21 +1,21 @@
 def calc_fuel(mass):
     return int((mass / 3)) - 2
 
+assert(calc_fuel(12) == 2)
+assert(calc_fuel(14) == 2)
+assert(calc_fuel(1969) == 654)
+assert(calc_fuel(100756) == 33583)
 
-print(calc_fuel(12))
-print(calc_fuel(14))
-print(calc_fuel(1969))
-print(calc_fuel(100756))
+def calc_total(func):
+    f = open("input", "r")
+    lines = map(int, f.readlines())
+    res = sum(map(func, lines))
+    f.close()
+    return res
 
-f = open("input", "r")
-sum = 0
-for l in f:
-    sum += calc_fuel(int(l))
+print("Sum is", calc_total(calc_fuel))
 
-print("sum is ", sum)
-f.close()
-
-
+# part 2
 def fuel_for_fuel(mass):
     fuel = calc_fuel(mass)
     total = 0
@@ -27,14 +27,8 @@ def fuel_for_fuel(mass):
         fuel = add
     return total
 
-print(fuel_for_fuel(14))
-print(fuel_for_fuel(1969))
-print(fuel_for_fuel(100756))
+assert(fuel_for_fuel(14) == 2)
+assert(fuel_for_fuel(1969) == 966)
+assert(fuel_for_fuel(100756) == 50346)
 
-f = open("input", "r")
-sum2 = 0
-for l in f:
-    sum2 += fuel_for_fuel(int(l))
-
-print("Total sum is ", sum2)
-f.close()
+print("Total sum is", calc_total(fuel_for_fuel))
