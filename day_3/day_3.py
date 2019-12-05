@@ -136,21 +136,17 @@ def read_file(name):
     f = open(name, "r")
     lines = f.readlines()
     c1 = lines[0].rstrip('\n').split(',')
-    c2 = lines[1].rstrip('\n').split(',')
-    print(c1)
-    print(c2)
-    f.close()
+    c2 = lines[1].rstrip('\n').split(',')    f.close()
     return c1, c2
 
 # part 1
-print(find_closest_intersection(['R8', 'U5', 'L5', 'D3'], ['U7', 'R6', 'D4', 'L4']))
-print(find_closest_intersection(*read_file("input1")))
-print(find_closest_intersection(*read_file("input2")))
+assert(find_closest_intersection(['R8', 'U5', 'L5', 'D3'], ['U7', 'R6', 'D4', 'L4']) == 6)
+assert(find_closest_intersection(*read_file("input1")) == 159)
+assert(find_closest_intersection(*read_file("input2")) == 135)
 print(find_closest_intersection(*read_file("input_main")))
 
-
 # part 2
-print(find_closest_intersection_by_steps(['R8', 'U5', 'L5', 'D3'], ['U7', 'R6', 'D4', 'L4']))
-print(find_closest_intersection_by_steps(*read_file("input1")))
-print(find_closest_intersection_by_steps(*read_file("input2")))
+assert(find_closest_intersection_by_steps(['R8', 'U5', 'L5', 'D3'], ['U7', 'R6', 'D4', 'L4']) == 30)
+assert(find_closest_intersection_by_steps(*read_file("input1")) == 610)
+assert(find_closest_intersection_by_steps(*read_file("input2")) == 410)
 print(find_closest_intersection_by_steps(*read_file("input_main")))
