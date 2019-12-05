@@ -1,0 +1,40 @@
+def calc_fuel(mass):
+    return int((mass / 3)) - 2
+
+
+print(calc_fuel(12))
+print(calc_fuel(14))
+print(calc_fuel(1969))
+print(calc_fuel(100756))
+
+f = open("input", "r")
+sum = 0
+for l in f:
+    sum += calc_fuel(int(l))
+
+print("sum is ", sum)
+f.close()
+
+
+def fuel_for_fuel(mass):
+    fuel = calc_fuel(mass)
+    total = 0
+    total += fuel
+    while fuel > 0:
+        add = calc_fuel(fuel)
+        if add > 0:
+            total += add
+        fuel = add
+    return total
+
+print(fuel_for_fuel(14))
+print(fuel_for_fuel(1969))
+print(fuel_for_fuel(100756))
+
+f = open("input", "r")
+sum2 = 0
+for l in f:
+    sum2 += fuel_for_fuel(int(l))
+
+print("Total sum is ", sum2)
+f.close()
