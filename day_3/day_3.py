@@ -136,7 +136,8 @@ def read_file(name):
     f = open(name, "r")
     lines = f.readlines()
     c1 = lines[0].rstrip('\n').split(',')
-    c2 = lines[1].rstrip('\n').split(',')    f.close()
+    c2 = lines[1].rstrip('\n').split(',')
+    f.close()
     return c1, c2
 
 # part 1
