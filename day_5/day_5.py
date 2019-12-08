@@ -24,10 +24,14 @@ def normalize(instr):
     return instr
 
 
-def compute(program, input):
+def compute(program, input, phase = None):
+    if phase is None:
+        phase = input
     output = []
     i = 0
+    first_input = True
     while i < len(program):
+        #
         i_code = program[i]
         s_code = str(i_code)
         if is_instruction(s_code):
@@ -80,9 +84,15 @@ def compute(program, input):
                 else:
                     program[p3] = 0
                 i = i + 4
+            else:
+                i = i + 1
         elif i_code == 3:
+            setting = input
+            if first_input:
+                setting = phase
+                first_input = False
             p1 = program[i + 1]
-            program[p1] = input
+            program[p1] = setting
             i = i + 2
         elif i_code == 4:
             p1 = program[i + 1]
